@@ -1,0 +1,29 @@
+$red: red;
+$black: black;
+
+@mixin list {
+  padding-left: 20px;
+  text-align: left;
+  border-bottom: 1px solid $black;
+}
+
+@mixin modal {
+  margin-top: 20px;
+  padding: 20px;
+  text-align: left;
+}
+
+.App {
+  .black-nav {
+    background-color: black;
+    text-align: center;
+    color: white;
+    height: 100px;
+  }
+  .list {
+    @include list();
+  }
+  .modal {
+    @include modal();
+  }
+}

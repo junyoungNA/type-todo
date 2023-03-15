@@ -1,4 +1,4 @@
-import { useCallback, useState } from 'react';
+import { useCallback, useEffect, useState } from 'react';
 import './assets/styles/body.scss';
 import List from './component/List';
 import Modal from './component/Modal';
@@ -11,10 +11,20 @@ function App(): JSX.Element {
     { title: '강남 우동 맛집', date: '2월 17일', like: 0, detail: '상세내용' },
     { title: '나주 국밥 맛집', date: '6월17일', like: 0, detail: '상세내용' },
   ]);
-
   const [modalNum, setModalNum] = useState(-1);
   const [isModify, setIsModify] = useState(false);
-  const [inputs, setInputs, onChangeInput] = useInputs();
+
+  const [inputs, setInputs, onChangeInputs] = useInputs();
+  const { title, date, detail } = inputs;
+
+  useEffect(() => {
+    if (modalNum === -1) return;
+    setInputs({
+      title: place[modalNum].title,
+      date: place[modalNum].date,
+      detail: place[modalNum].detail,
+    });
+  }, [modalNum]);
 
   const onLike = useCallback(
     (index: number): void => {
@@ -56,15 +66,15 @@ function App(): JSX.Element {
           like={place[modalNum].like}
           onLike={onLike}
           setIsModify={setIsModify}
-          setInputs={setInputs}
         />
       )}
       {isModify && (
         <ModifyModal
           setIsModify={setIsModify}
-          title={place[modalNum].title}
-          detail={place[modalNum].detail}
-          date={place[modalNum].date}
+          title={title}
+          detail={detail}
+          date={date}
+          onChangeInput={onChangeInputs}
         />
       )}
     </div>

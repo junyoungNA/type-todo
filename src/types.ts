@@ -1,4 +1,4 @@
-type InputTypes = {
+export type InputTypes = {
   title: string;
   date: string;
   detail: string;
@@ -21,7 +21,6 @@ export interface ModalTypes {
   date: string;
   like: number;
   setIsModify: (isModify: boolean) => void;
-  setInputs: (inputData: InputTypes) => void;
   onLike: (index: number) => void;
 }
 
@@ -30,4 +29,5 @@ export interface ModifyModalTypes {
   detail: string;
   date: string;
   setIsModify: (isModify: boolean) => void;
+  onChangeInput: () => void;
 }

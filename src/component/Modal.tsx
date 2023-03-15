@@ -8,7 +8,6 @@ const Modal: React.FC<ModalTypes> = ({
   like,
   onLike,
   setIsModify,
-  setInputs,
 }) => {
   return (
     <div className="modal">
@@ -25,7 +24,6 @@ const Modal: React.FC<ModalTypes> = ({
       <button
         onClick={() => {
           setIsModify(true);
-          // setInputs({ title, date, detail });
         }}
       >
         수정하기

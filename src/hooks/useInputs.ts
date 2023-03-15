@@ -1,7 +1,9 @@
 import { useState } from 'react';
 
-export const useInputs = () => {
-  const [inputs, setInputs] = useState({
+type Inputs = { title: string; date: string; detail: string };
+
+export const useInputs = (): any => {
+  const [inputs, setInputs] = useState<Inputs>({
     title: '',
     date: '',
     detail: '',

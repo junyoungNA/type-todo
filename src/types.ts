@@ -29,5 +29,6 @@ export interface ModifyModalTypes {
   detail: string;
   date: string;
   setIsModify: (isModify: boolean) => void;
+  setPlace: () => void;
   onChangeInput: () => void;
 }

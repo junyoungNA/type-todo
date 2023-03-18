@@ -2,13 +2,14 @@ import { ModifyModalTypes } from '../types';
 
 const ModifyModal: React.FC<ModifyModalTypes> = ({
   setIsModify,
+  setPlace,
   title,
   date,
   detail,
   onChangeInput,
 }) => {
   const onModify = () => {
-    setIsModify(false);
+    setPlace();
   };
 
   const onCancleModify = () => {

@@ -71,6 +71,7 @@ function App(): JSX.Element {
       {isModify && (
         <ModifyModal
           setIsModify={setIsModify}
+          setPlace={setPlace}
           title={title}
           detail={detail}
           date={date}

@@ -6,10 +6,20 @@ const ModifyModal: React.FC<ModifyModalTypes> = ({
   title,
   date,
   detail,
+  place,
+  like,
+  modalNum,
   onChangeInput,
 }) => {
   const onModify = () => {
-    setPlace();
+    const copy = [...place];
+    copy[modalNum] = {
+      title,
+      date,
+      detail,
+      like,
+    };
+    setPlace([...copy]);
   };
 
   const onCancleModify = () => {
@@ -20,7 +30,7 @@ const ModifyModal: React.FC<ModifyModalTypes> = ({
       <input value={title} name="title" onChange={onChangeInput} />
       <input value={date} name="date" onChange={onChangeInput} />
       <textarea value={detail} name="detail" onChange={onChangeInput} />
-      <button>수정완료</button>
+      <button onClick={onModify}>수정완료</button>
       <button onClick={onCancleModify}>수정취소</button>
     </div>
   );

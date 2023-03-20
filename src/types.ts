@@ -28,7 +28,10 @@ export interface ModifyModalTypes {
   title: string;
   detail: string;
   date: string;
+  place: any;
+  like: number;
+  modalNum: number;
   setIsModify: (isModify: boolean) => void;
-  setPlace: () => void;
+  setPlace: (state: any) => void;
   onChangeInput: () => void;
 }

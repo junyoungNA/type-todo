@@ -75,6 +75,9 @@ function App(): JSX.Element {
           title={title}
           detail={detail}
           date={date}
+          like={place[modalNum].like}
+          place={place}
+          modalNum={modalNum}
           onChangeInput={onChangeInputs}
         />
       )}

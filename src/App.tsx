@@ -13,18 +13,22 @@ function App(): JSX.Element {
   ]);
   const [modalNum, setModalNum] = useState(-1);
   const [isModify, setIsModify] = useState(false);
+  const [isAdd, setIsAdd] = useState(false);
 
-  const [inputs, setInputs, onChangeInputs] = useInputs();
+  const [inputs, setInputs, onChangeInputs, clearInputs] = useInputs();
   const { title, date, detail } = inputs;
 
   useEffect(() => {
-    if (modalNum === -1) return;
+    if (modalNum === -1) {
+      clearInputs();
+      return;
+    }
     setInputs({
       title: place[modalNum].title,
       date: place[modalNum].date,
       detail: place[modalNum].detail,
     });
-  }, [modalNum]);
+  }, [modalNum, isModify]);
 
   const onLike = useCallback(
     (index: number): void => {
@@ -39,12 +43,24 @@ function App(): JSX.Element {
     setPlace([...place.sort((a, b) => a.title.localeCompare(b.title))]);
   };
 
+  const onIsAdd = (): void => {
+    setModalNum(-1);
+    setIsModify(false);
+    setIsAdd(true);
+  };
+
+  const onAdd = (): void => {
+    const newData = { title, date, detail, like: 0 };
+    setPlace([...place, newData]);
+  };
+
   return (
     <div className="App">
       <div className="black-nav">
         <h4>블로그</h4>
       </div>
       <button onClick={onSort}>정렬</button>
+      <button onClick={onIsAdd}>추가</button>
       {place.map((item, index) => (
         <List
           key={index}
@@ -66,6 +82,7 @@ function App(): JSX.Element {
           like={place[modalNum].like}
           onLike={onLike}
           setIsModify={setIsModify}
+          setIsAdd={setIsAdd}
         />
       )}
       {isModify && (
@@ -80,6 +97,15 @@ function App(): JSX.Element {
           modalNum={modalNum}
           onChangeInput={onChangeInputs}
         />
+      )}
+      {isAdd && (
+        <div className="modal">
+          <input value={title} name="title" onChange={onChangeInputs} />
+          <input value={date} name="date" onChange={onChangeInputs} />
+          <textarea value={detail} name="detail" onChange={onChangeInputs} />
+          <button onClick={onAdd}>완료</button>
+          <button onClick={() => setIsAdd(false)}>취소</button>
+        </div>
       )}
     </div>
   );

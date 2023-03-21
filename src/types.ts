@@ -21,6 +21,7 @@ export interface ModalTypes {
   date: string;
   like: number;
   setIsModify: (isModify: boolean) => void;
+  setIsAdd: (isAdd: boolean) => void;
   onLike: (index: number) => void;
 }
 

@@ -21,5 +21,13 @@ export const useInputs = (): any => {
       [name]: value,
     });
   };
-  return [inputs, setInputs, onChangeInput];
+
+  const clearInputs = (): void => {
+    setInputs({
+      title: '',
+      date: '',
+      detail: '',
+    });
+  };
+  return [inputs, setInputs, onChangeInput, clearInputs];
 };

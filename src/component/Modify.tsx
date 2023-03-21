@@ -20,6 +20,7 @@ const ModifyModal: React.FC<ModifyModalTypes> = ({
       like,
     };
     setPlace([...copy]);
+    setIsModify(false);
   };
 
   const onCancleModify = () => {

@@ -23,6 +23,7 @@ export interface ModalTypes {
   setIsModify: (isModify: boolean) => void;
   setIsAdd: (isAdd: boolean) => void;
   onLike: (index: number) => void;
+  onDelete: (index: number) => void;
 }
 
 export interface ModifyModalTypes {

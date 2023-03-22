@@ -52,6 +52,13 @@ function App(): JSX.Element {
   const onAdd = (): void => {
     const newData = { title, date, detail, like: 0 };
     setPlace([...place, newData]);
+    setIsAdd(false);
+  };
+
+  const onDelete = (index: number): void => {
+    const copyData = [...place];
+    copyData.splice(index, 1);
+    setPlace([...copyData]);
   };
 
   return (
@@ -83,6 +90,7 @@ function App(): JSX.Element {
           onLike={onLike}
           setIsModify={setIsModify}
           setIsAdd={setIsAdd}
+          onDelete={onDelete}
         />
       )}
       {isModify && (

@@ -9,6 +9,7 @@ const Modal: React.FC<ModalTypes> = ({
   onLike,
   setIsModify,
   setIsAdd,
+  onDelete,
 }) => {
   return (
     <div className="modal">
@@ -30,6 +31,7 @@ const Modal: React.FC<ModalTypes> = ({
       >
         수정하기
       </button>
+      <button onClick={() => onDelete(index)}>삭제하기</button>
     </div>
   );
 };

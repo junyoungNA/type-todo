@@ -9,6 +9,7 @@ import './App.css';
 
 export default function App(): JSX.Element {
   const [shoes, setShoew] = useState(data);
+  console.log(shoes);
   return (
     <div className="App">
       <Navbar bg="dark" variant="dark">
@@ -23,9 +24,11 @@ export default function App(): JSX.Element {
         <Button variant="primary">Primary</Button>
       </Navbar>
       <div className="main-bg"></div>
-      {shoes.map(item => {
-        <Shoes shoes={item} />;
-      })}
+      <Container className="main-container">
+        {shoes.map(item => {
+          return <Shoes key={item.id} shoes={item} />;
+        })}
+      </Container>
     </div>
   );
 }

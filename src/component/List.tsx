@@ -1,6 +1,5 @@
 import React from 'react';
 import { ListTypes } from '../types';
-import Modal from './Modal';
 
 const List: React.FC<ListTypes> = ({
   index,

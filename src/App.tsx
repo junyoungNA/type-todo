@@ -1,13 +1,14 @@
+import { useState } from 'react';
 import { Button } from 'react-bootstrap';
 import Container from 'react-bootstrap/Container';
 import Nav from 'react-bootstrap/Nav';
 import Navbar from 'react-bootstrap/Navbar';
-import Row from 'react-bootstrap/Row';
-import Col from 'react-bootstrap/Col';
-import shoes1 from './img/shoes1.jpeg';
+import data from './data';
+import Shoes from './component/Shoes';
 import './App.css';
 
 export default function App(): JSX.Element {
+  const [shoes, setShoew] = useState(data);
   return (
     <div className="App">
       <Navbar bg="dark" variant="dark">
@@ -22,38 +23,9 @@ export default function App(): JSX.Element {
         <Button variant="primary">Primary</Button>
       </Navbar>
       <div className="main-bg"></div>
-      <Container className="main-container">
-        <Row className="main-row">
-          <Col className="main-col">
-            <img
-              src={process.env.PUBLIC_URL + './img/shoes1.jpeg'}
-              alt=""
-              className="main-img"
-            />
-            <h4>상품</h4>
-            <p>상품설명</p>
-          </Col>
-          <Col>
-            <img
-              src={process.env.PUBLIC_URL + './img/shoes2.jpeg'}
-              alt=""
-              className="main-img"
-            />
-            <h4>상품</h4>
-            <p>상품설명</p>
-          </Col>
-          <Col>
-            {' '}
-            <img
-              src={process.env.PUBLIC_URL + './img/shoes3.jpeg'}
-              alt=""
-              className="main-img"
-            />
-            <h4>상품</h4>
-            <p>상품설명</p>
-          </Col>
-        </Row>
-      </Container>
+      {shoes.map(item => {
+        <Shoes shoes={item} />;
+      })}
     </div>
   );
 }

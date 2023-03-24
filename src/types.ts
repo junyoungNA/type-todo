@@ -4,6 +4,13 @@ export type InputTypes = {
   detail: string;
 };
 
+export type Shoes = {
+  id: number;
+  title: string;
+  content: string;
+  price: number;
+};
+
 export interface ListTypes {
   index: number;
   title: string;
@@ -36,4 +43,8 @@ export interface ModifyModalTypes {
   setIsModify: (isModify: boolean) => void;
   setPlace: (state: any) => void;
   onChangeInput: () => void;
+}
+
+export interface ShoesTypes {
+  shoes: Shoes;
 }

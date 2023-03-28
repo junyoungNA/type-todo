@@ -9,7 +9,8 @@ const Detail: React.FC = () => {
       <div className="row">
         <div className="col-md-6">
           <img
-            src={process.env.PUBLIC_URL + `./img/shoes${id + 1}.jpeg`}
+            // src={process.env.PUBLIC_URL + `./img/shoes1.jpeg`}
+            src={`../img/shoes${id + 1}.jpeg`}
             alt="신발 사진"
             width="100%"
           />

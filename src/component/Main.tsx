@@ -1,24 +1,49 @@
-import { Link, useNavigate } from 'react-router-dom';
+import { Link } from 'react-router-dom';
 import Container from 'react-bootstrap/Container';
 import Shoes from './Shoes';
 import { useEffect, useState } from 'react';
 import data from '../data';
 import '../App.css';
-import { ShoesTypes } from '../types';
 import axios from 'axios';
+import styled from 'styled-components';
+
+const MoreBtn = styled.button`
+  width: 200px;
+  height: 30px;
+`;
 
 const Main: React.FC = () => {
-  useEffect(() => {
-    axios
-      .get(`https://codingapple1.github.io/shop/data2.json`)
-      .then(res => {
-        console.log(res);
-      })
-      .catch(err => {
-        alert(err);
-      });
-  });
-  const [shoes, setShoew] = useState(data);
+  const [shoes, setShoes] = useState(data);
+  const [clickNum, setClickNum] = useState(0);
+  const onMoreShoes = (): void => {
+    setClickNum(clickNum + 1);
+    if (clickNum === 0) {
+      axios
+        .get(`https://codingapple1.github.io/shop/data2.json`)
+        .then(res => {
+          console.log(res);
+          const newData = [...shoes, ...res.data];
+          console.log(newData);
+          setShoes(newData);
+        })
+        .catch(err => {
+          alert(err);
+        });
+    } else if (clickNum === 1) {
+      axios
+        .get(`https://codingapple1.github.io/shop/data3.json`)
+        .then(res => {
+          console.log(res);
+          const newData = [...shoes, ...res.data];
+          console.log(newData);
+          setShoes(newData);
+        })
+        .catch(err => {
+          alert(err);
+        });
+    }
+  };
+
   return (
     <div className="App">
       <div className="main-bg"></div>
@@ -31,6 +56,11 @@ const Main: React.FC = () => {
             </Link>
           );
         })}
+        {clickNum < 2 && (
+          <MoreBtn className="more-btn" onClick={onMoreShoes}>
+            더보기
+          </MoreBtn>
+        )}
       </Container>
     </div>
   );

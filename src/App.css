@@ -11,6 +11,16 @@
   text-align: center;
   margin: 50px auto;
   width: 1200px;
+  flex-wrap: wrap;
+}
+
+.start {
+  opacity: 0;
+}
+
+.end {
+  opacity: 1;
+  transition: opacity 0.5s;
 }
 
 .main-row {

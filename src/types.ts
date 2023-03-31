@@ -11,6 +11,11 @@ export type Shoes = {
   price: number;
 };
 
+export type TabTypes = {
+  tab: number;
+  setTab: (tab: number) => void;
+};
+
 export interface ListTypes {
   index: number;
   title: string;

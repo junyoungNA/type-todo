@@ -1,10 +1,13 @@
 import { Table } from 'react-bootstrap';
-import { useSelector } from 'react-redux';
+import { useDispatch, useSelector } from 'react-redux';
+import { changeCount } from '../redux/cartSlice';
 
 const Cart: React.FC = () => {
-  const result = useSelector(state => {
-    return state;
+  const result: any = useSelector((state: any) => {
+    return state.userData;
   });
+
+  const dispatch = useDispatch();
 
   console.log(result);
   return (
@@ -18,12 +21,22 @@ const Cart: React.FC = () => {
         </tr>
       </thead>
       <tbody>
-        <tr>
-          <td>1</td>
-          <td>안녕</td>
-          <td>안녕</td>
-          <td>안녕</td>
-        </tr>
+        {result.map((item: any) => (
+          <tr>
+            <td>{item.id}</td>
+            <td>{item.name}</td>
+            <td>{item.count}</td>
+            <td>
+              <button
+                onClick={() => {
+                  dispatch(changeCount(item.id));
+                }}
+              >
+                +
+              </button>
+            </td>
+          </tr>
+        ))}
       </tbody>
     </Table>
   );

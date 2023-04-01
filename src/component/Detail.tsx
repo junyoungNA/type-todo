@@ -3,6 +3,8 @@ import data from '../data';
 import styled from 'styled-components';
 import { useEffect, useState } from 'react';
 import Tab from '../component/Tab';
+import { useDispatch } from 'react-redux';
+import { addItem } from '../redux/cartSlice';
 const ColorBtn = styled.button`
   background: ${props => (props.color === 'blue' ? 'white' : 'black')};
   color: ${props => (props.color === 'blue' ? 'white' : 'black')};
@@ -22,6 +24,7 @@ const WarningBox = styled.div`
 `;
 
 const Detail: React.FC = () => {
+  const dispatch = useDispatch();
   const param = useParams();
   const id = Number(param.id);
   const [buyNum, setBuyNum] = useState('0');
@@ -82,7 +85,15 @@ const Detail: React.FC = () => {
               <p>{data[id].price}</p>
               {isWarning && <WarningBox>숫자만 적어주세요</WarningBox>}
               <input type="number" onChange={onBuyChange} value={buyNum} />
-              <button className="btn btn-danger">주문하기</button>
+              <button
+                className="btn btn-danger"
+                onClick={() => {
+                  console.log(data[id]);
+                  dispatch(addItem({ ...data[id], count: buyNum }));
+                }}
+              >
+                주문하기
+              </button>
             </>
           ) : (
             <div>해당 상품이 없습니다</div>

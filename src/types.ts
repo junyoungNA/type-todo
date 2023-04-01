@@ -16,6 +16,12 @@ export type TabTypes = {
   setTab: (tab: number) => void;
 };
 
+export type CartTypes = {
+  id: number;
+  name: string;
+  count: number;
+};
+
 export interface ListTypes {
   index: number;
   title: string;

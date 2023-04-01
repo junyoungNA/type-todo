@@ -1,5 +1,5 @@
 import { configureStore, createSlice } from '@reduxjs/toolkit';
-
+import userData from './cartSlice';
 const user = createSlice({
   name: 'user',
   initialState: 'kim',
@@ -16,6 +16,7 @@ const store = configureStore({
   reducer: {
     user: user.reducer,
     stock: stock.reducer,
+    userData: userData.reducer,
   },
 });
 

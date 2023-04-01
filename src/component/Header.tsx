@@ -14,7 +14,9 @@ const Header: React.FC = () => {
           <Nav.Link href="#home" onClick={() => navigate('/')}>
             Home
           </Nav.Link>
-          <Nav.Link href="#features">Features</Nav.Link>
+          <Nav.Link href="#features" onClick={() => navigate('/cart')}>
+            Cart
+          </Nav.Link>
           <Nav.Link href="#pricing">Pricing</Nav.Link>
         </Nav>
       </Container>

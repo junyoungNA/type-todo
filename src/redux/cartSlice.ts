@@ -10,15 +10,27 @@ const userData = createSlice({
     changeCount(state: any, action) {
       // state[action.payload].count += 1;
       const target = state.findIndex((item: any) => item.id === action.payload);
-      console.log(target);
       state[target].count += 1;
     },
     addItem(state, action) {
-      state.push(action.payload);
+      const target = state.findIndex(
+        (item: any) => item.id === action.payload.id
+      );
+      if (target === -1) {
+        state.push(action.payload);
+      } else {
+        state[target].count += Number(action.payload.count);
+      }
+    },
+    removeItem(state, action) {
+      const target = state.findIndex((item: any) => item.id === action.payload);
+      console.log(target);
+      if (target === -1) return;
+      state.splice(target, 1);
     },
   },
 });
 
-export const { changeCount, addItem } = userData.actions;
+export const { changeCount, addItem, removeItem } = userData.actions;
 
 export default userData;

@@ -89,7 +89,7 @@ const Detail: React.FC = () => {
                 className="btn btn-danger"
                 onClick={() => {
                   console.log(data[id]);
-                  dispatch(addItem({ ...data[id], count: buyNum }));
+                  dispatch(addItem({ ...data[id], count: Number(buyNum) }));
                 }}
               >
                 주문하기

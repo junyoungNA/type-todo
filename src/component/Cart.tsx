@@ -1,6 +1,6 @@
 import { Table } from 'react-bootstrap';
 import { useDispatch, useSelector } from 'react-redux';
-import { changeCount } from '../redux/cartSlice';
+import { changeCount, removeItem } from '../redux/cartSlice';
 
 const Cart: React.FC = () => {
   const result: any = useSelector((state: any) => {
@@ -33,6 +33,15 @@ const Cart: React.FC = () => {
                 }}
               >
                 +
+              </button>
+            </td>
+            <td>
+              <button
+                onClick={() => {
+                  dispatch(removeItem(item.id));
+                }}
+              >
+                삭제하기
               </button>
             </td>
           </tr>

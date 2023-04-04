@@ -15,6 +15,14 @@ const MoreBtn = styled.button`
 const Main: React.FC = () => {
   const [shoes, setShoes] = useState(data);
   const [clickNum, setClickNum] = useState(0);
+
+  useEffect(() => {
+    const watched = localStorage.getItem('watched');
+    if (watched === null) {
+      localStorage.setItem('watched', JSON.stringify([]));
+    }
+  }, []);
+
   const onMoreShoes = (): void => {
     setClickNum(clickNum + 1);
     if (clickNum === 0) {

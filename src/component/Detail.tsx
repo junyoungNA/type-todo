@@ -51,14 +51,18 @@ const Detail: React.FC = () => {
     // return () => {
     //   clearTimeout(timeId);
     // };
-
+    const watched: any = localStorage.getItem('watched');
+    console.log(JSON.parse(watched));
+    const current = [...JSON.parse(watched), id];
+    console.log(current);
+    localStorage.setItem('watched', JSON.stringify(current));
     setTimeout(() => {
       setFade('end');
     }, 100);
     return () => {
       setFade('');
     };
-  }, []);
+  }, [id]);
 
   return (
     <div className={'container start ' + fade}>

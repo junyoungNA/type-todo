@@ -6,6 +6,7 @@ import data from '../data';
 import '../App.css';
 import axios from 'axios';
 import styled from 'styled-components';
+import Button from './Button';
 
 const MoreBtn = styled.button`
   width: 200px;
@@ -70,6 +71,7 @@ const Main: React.FC = () => {
           </MoreBtn>
         )}
       </Container>
+      <Button />
     </div>
   );
 };

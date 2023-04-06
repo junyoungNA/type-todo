@@ -1,15 +1,15 @@
-import { observable } from 'mobx';
+import { makeAutoObservable } from 'mobx';
 
-const numberStore = observable({
-  num: 0,
+export default class NumberStore {
+  constructor() {
+    makeAutoObservable(this);
+  }
+  num = 0;
+  increasseAction = () => {
+    this.num++;
+  };
 
-  increasseAction(num: number) {
-    this.num = this.num + num;
-  },
-
-  decreaseAction(num: number) {
-    this.num = this.num - num;
-  },
-});
-
-export default numberStore;
+  decreaseAction() {
+    this.num--;
+  }
+}

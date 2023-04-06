@@ -7,6 +7,8 @@ import '../App.css';
 import axios from 'axios';
 import styled from 'styled-components';
 import Button from './Button';
+import NumberStore from '../mobx/numberStore';
+const Store = new NumberStore();
 
 const MoreBtn = styled.button`
   width: 200px;
@@ -71,7 +73,7 @@ const Main: React.FC = () => {
           </MoreBtn>
         )}
       </Container>
-      <Button />
+      <Button counter={Store} />
     </div>
   );
 };
